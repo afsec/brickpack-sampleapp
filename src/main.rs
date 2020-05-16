@@ -22,8 +22,7 @@ fn main() {
     app.add_endpoint("crud-users", crate::api::users::presenter::handler);
     app.add_endpoint("crud-groups", crate::api::groups::presenter::handler);
     app.set_bind(bind);
-
-    println!("{} v{}", crate_name!(), crate_version!());
+    println!("Starting App [{} v{}]", crate_name!(), crate_version!());
 
     run(app).unwrap();
 }
