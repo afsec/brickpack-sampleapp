@@ -139,8 +139,8 @@ checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
 name = "brickpack"
-version = "0.1.0"
-source = "git+https://github.com/afsec/brickpack#8a28a20789eb8cd041ef07134a8ce4537b458c68"
+version = "0.1.5"
+source = "git+https://github.com/afsec/brickpack#32cc44334b8b091b07099f02cf52ca1e0b56a931"
 dependencies = [
  "async-std",
  "http-types",
