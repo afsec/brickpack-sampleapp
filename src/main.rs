@@ -19,8 +19,8 @@ fn main() {
 
     let mut app = App::new();
 
-    app.add_endpoint("crud-users".to_string(), crate::api::users::presenter::handler);
-    app.add_endpoint("crud-groups".to_string(), crate::api::groups::presenter::handler);
+    app.add_endpoint("crud-users", crate::api::users::presenter::handler);
+    app.add_endpoint("crud-groups", crate::api::groups::presenter::handler);
     app.set_bind(bind);
 
     println!("{} v{}", crate_name!(), crate_version!());
