@@ -1,2 +1,2 @@
-pub mod groups;
-pub mod users;
+pub mod show_posts;
+pub mod show_users;
