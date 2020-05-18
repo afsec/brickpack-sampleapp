@@ -12,16 +12,16 @@ fn main() {
         .about(crate_description!())
         .get_matches();
 
-    let listen_addr = "0.0.0.0";
-    let listen_port = "8000";
+    let addr = "0.0.0.0";
+    let port = "8000";
 
-    let bind = format!("{}:{}", listen_addr, listen_port);
+    let listen = format!("{}:{}", addr, port);
 
     let mut app = App::new();
 
     app.add_endpoint("show-users", crate::api::show_users::presenter::handler);
     app.add_endpoint("show-posts", crate::api::show_posts::presenter::handler);
-    app.set_bind(bind);
+    app.listen(listen);
 
     println!("Starting App [{} v{}]:", crate_name!(), crate_version!());
 
