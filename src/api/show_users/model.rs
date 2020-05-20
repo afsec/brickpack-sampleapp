@@ -1,12 +1,10 @@
+use brickpack::http_client::http_client;
+
 pub fn show_users(body: Option<String>) -> Result<String, String> {
-    // let token = "9QYCfVgj5S7vJDxMtUDpca2AQdeliU9hCF5eVZK".to_string();
-    // let url = "http://localhost:8000/api/crud-groups";
-    //     let body_json = r#"{
-    //     "user": "charlie.root",
-    //     "password": "secret"
-    // }"#;
-    match body {
-        Some(body) => Ok(body),
-        None => Err("Empty Body".to_string()),
-    }
+    let token = "9admin9".to_string();
+    // Request data from Concierge-db Server
+    // https://github.com/afsec/concierge-db
+    let url = "http://localhost:3341/api/users/read-all".to_string();
+    let result = http_client(url, Some(token), None);
+    result
 }
