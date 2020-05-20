@@ -1,6 +1,7 @@
 # BrickPack SampleApp
 
 A sample CNA (Cloud Native Application)/Microservice writen using brickpack: https://github.com/afsec/brickpack
+
 ## Lean artifact (~2 MB)
 The whole microservice is compiled as statically compiled via MUSL target.
 ```
