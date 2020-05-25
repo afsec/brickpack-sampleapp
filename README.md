@@ -14,9 +14,9 @@ total 2,0M
 ## Startup message
 ```
 $ CLIENT_TOKEN="SomeRandomToken" ./dist/brickpack-sampleapp
-Starting App [brickpack-sampleapp v0.1.4]:
+Starting App [brickpack-sampleapp v0.1.6]:
 
-Brickpack Web Framework v0.2.5
+Brickpack Web Framework v0.3.0
 
 System Endpoints:
                        GET   - /
