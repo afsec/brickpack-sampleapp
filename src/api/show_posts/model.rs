@@ -6,7 +6,6 @@ pub fn show_posts(body: Option<String>) -> Result<String, String> {
     let method = "GET".to_string();
     let url = "http://localhost:3341/api/posts/read-all".to_string();
     let token = "9admin9".to_string();
-
     let result = http_client(method, url, Some(token), None);
     result
 }

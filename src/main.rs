@@ -1,9 +1,10 @@
 #![warn(clippy::all)]
 
-use brickpack::App;
+mod api;
+
 use clap::{crate_authors, crate_description, crate_name, crate_version, App as ClapApp};
 
-mod api;
+use brickpack::App;
 
 fn main() {
     ClapApp::new(crate_name!())
@@ -24,6 +25,5 @@ fn main() {
     app.listen(listen);
 
     println!("Starting App [{} v{}]:", crate_name!(), crate_version!());
-
     app.run().unwrap();
 }
