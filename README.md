@@ -3,7 +3,7 @@
 A sample CNA (Cloud Native Application)/Microservice writen using brickpack: https://github.com/afsec/brickpack
 
 ## Lean artifact (~5 MB)
-The whole microservice is built as static compiling using **MUSL** target.
+The whole microservice is built with static compiling using **MUSL** target.
 ```
 $ ls -lh
 total 5,0M
