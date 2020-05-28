@@ -13,10 +13,10 @@ total 5,0M
 
 ## Startup message
 ```
-$ BP_SERVER_TOKEN="SomeRandomToken" ./dist/brickpack-sampleapp
-Starting App [brickpack-sampleapp v0.1.7]:
+$ BP_SERVER_TOKEN="SomeRandomToken" DB_SERVER_URL="http://concierge-db:3341" BP_CLIENT_TOKEN="SomeAnotherRandomToken" ./dist/brickpack-sampleapp
+Starting App [brickpack-sampleapp v0.2.0]:
 
-Brickpack Web Framework v0.3.0
+Brickpack Web Framework v0.6.2
 
 System Endpoints:
                        GET   - /

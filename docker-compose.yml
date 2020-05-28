@@ -3,26 +3,20 @@ services:
   concierge-db:
     image: "afsec/concierge-db:latest"
     # volumes:
-      # - concierge_data:/data
+    # - concierge_data:/data
     restart: always
     environment:
-      # DB_CLIENT_TOKEN: 9admin9
-      # HTTP_CLIENT_TOKEN: 9admin9
-      CLIENT_TOKEN: 9admin9
-
+      CONCIERGE_SERVER_TOKEN: BrickPackSampleAppToken
 
   brickpack-sampleapp:
     depends_on:
       - concierge-db
     environment:
-      # SERVER_TOKEN: 9admin9
-      # DB_CLIENT_TOKEN: 9admin9
-      # HTTP_CLIENT_TOKEN: 9admin9
-      BP_SERVER_TOKEN: 9admin9
-
+      BP_SERVER_TOKEN: SomeRandomToken
+      DB_SERVER_URL: http://concierge-db:3341
+      BP_CLIENT_TOKEN: BrickPackSampleAppToken
     build: .
     ports:
       - "8000:8000"
-
 # volumes:
-  # concierge_data: {}
+# concierge_data: {}

@@ -1,14 +1,15 @@
 [package]
 name = 'brickpack-sampleapp'
-version = '0.1.9'
+version = '0.2.1'
 authors = ['Antonio Feitosa <antonio.cfc@gmail.com>']
 edition = '2018'
 
 [dependencies]
 clap = '2.33.1'
 http-types = '2.0.1'
+log = "0.4.8"
 
 [dependencies.brickpack]
+version = '0.7'
 git = 'https://github.com/afsec/brickpack'
-version = '0.6'
 # path = '../brickpack'
