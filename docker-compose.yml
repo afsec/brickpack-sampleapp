@@ -6,10 +6,10 @@ services:
       # - concierge_data:/data
     restart: always
     environment:
-      # SERVER_TOKEN: 9admin9
       # DB_CLIENT_TOKEN: 9admin9
       # HTTP_CLIENT_TOKEN: 9admin9
       CLIENT_TOKEN: 9admin9
+
 
   brickpack-sampleapp:
     depends_on:
@@ -18,7 +18,8 @@ services:
       # SERVER_TOKEN: 9admin9
       # DB_CLIENT_TOKEN: 9admin9
       # HTTP_CLIENT_TOKEN: 9admin9
-      CLIENT_TOKEN: 9admin9
+      BP_SERVER_TOKEN: 9admin9
+
     build: .
     ports:
       - "8000:8000"

@@ -5,6 +5,6 @@
 FROM scratch
 COPY ./dist/brickpack-sampleapp /
 ENV PIPELINE development
-ENV CLIENT_TOKEN 9admin9
+ENV BP_SERVER_TOKEN 9admin9
 EXPOSE 8000
 ENTRYPOINT ["/brickpack-sampleapp"]

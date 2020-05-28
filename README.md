@@ -13,7 +13,7 @@ total 5,0M
 
 ## Startup message
 ```
-$ CLIENT_TOKEN="SomeRandomToken" ./dist/brickpack-sampleapp
+$ BP_SERVER_TOKEN="SomeRandomToken" ./dist/brickpack-sampleapp
 Starting App [brickpack-sampleapp v0.1.7]:
 
 Brickpack Web Framework v0.3.0
@@ -28,7 +28,7 @@ Application Endpoints:
                        POST  - /api/show-posts
 
 
-CLIENT_TOKEN: SomeRandomToken
+BP_SERVER_TOKEN: SomeRandomToken
 
 Listening at: http://0.0.0.0:8000
 
