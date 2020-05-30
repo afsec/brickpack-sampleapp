@@ -22,8 +22,11 @@ fn main() {
 
     app.add_endpoint("show-users", crate::api::show_users::presenter::handler);
     app.add_endpoint("show-posts", crate::api::show_posts::presenter::handler);
-    app.listen(listen);
 
-    println!("Starting App [{} v{}]:", crate_name!(), crate_version!());
+    app.set_name(crate_name!());
+    app.set_version(crate_version!());
+
+    app.set_listen(listen);
+
     app.run().unwrap();
 }
