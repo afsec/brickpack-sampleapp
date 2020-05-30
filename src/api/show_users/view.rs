@@ -1,4 +1,4 @@
-use http_types::{Response, StatusCode};
+use tide::{Response, StatusCode};
 
 pub fn show_users(body: Result<String, String>) -> Response {
     match body {

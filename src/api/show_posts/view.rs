@@ -1,4 +1,4 @@
-use http_types::{Response, StatusCode};
+use tide::{Response, StatusCode};
 
 pub fn show_posts(body: Result<String, String>) -> Response {
     match body {

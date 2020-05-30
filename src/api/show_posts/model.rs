@@ -1,9 +1,15 @@
-use crate::api::get_token_from_env;
 use crate::api::{DB_URL_ENV_VAR, DEFAULT_DB_URL};
-use brickpack::http_client::http_client;
-use brickpack::http_client::CLIENT_TOKEN_ENV_VAR;
 
-pub fn show_posts(body: Option<String>) -> Result<String, String> {
+use brickpack::{
+    env_vars::{get_token_from_env, CLIENT_TOKEN_ENV_VAR},
+    global_state::State,
+    http_client::http_client,
+};
+
+use tide::Request;
+
+pub fn show_posts(req: Request<State>) -> Result<String, String> {
+    dbg!(req);
     // Request data from Concierge-db Server
     // To Run:
     // git https://github.com/afsec/concierge-db
@@ -13,7 +19,7 @@ pub fn show_posts(body: Option<String>) -> Result<String, String> {
         Some(url) => url,
         None => {
             let msg = format!("Environment variable {} not found", DB_URL_ENV_VAR);
-            log::warn!("{}", &msg);
+            tide::log::warn!("{}", &msg);
             DEFAULT_DB_URL.to_string()
         }
     };
@@ -22,7 +28,7 @@ pub fn show_posts(body: Option<String>) -> Result<String, String> {
         Some(token) => token,
         None => {
             let msg = format!("Environment variable {} not found", CLIENT_TOKEN_ENV_VAR);
-            log::error!("{}", &msg);
+            tide::log::error!("{}", &msg);
             return Err(msg);
         }
     };
