@@ -1,5 +1,5 @@
 use brickpack::{
-    env_vars::{get_token_from_env, CLIENT_TOKEN_ENV_VAR},
+    env_vars::get_token_from_env,
     global_state::State,
     http_client::http_client,
 };
@@ -19,6 +19,6 @@ pub fn show_users(req: Request<State>) -> Result<String, String> {
 
     let method = "GET".to_string();
     let url = format!("{}/api/users/read-all", uri);
-    let result = http_client(method, url, get_token_from_env(CLIENT_TOKEN_ENV_VAR), None);
+    let result = http_client(method, url, None);
     result
 }
