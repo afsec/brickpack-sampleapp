@@ -9,7 +9,7 @@ use brickpack::{
 use tide::Request;
 
 pub fn show_posts(req: Request<State>) -> Result<String, String> {
-    dbg!(req);
+    // dbg!(req);
     // Request data from Concierge-db Server
     // To Run:
     // git https://github.com/afsec/concierge-db
@@ -24,7 +24,7 @@ pub fn show_posts(req: Request<State>) -> Result<String, String> {
         }
     };
 
-    let method = "GET".to_string();
+    let method = "POST".to_string();
     let url = format!("{}/api/posts/read-all", db_url);
     let result = http_client(method, url, None);
     result
