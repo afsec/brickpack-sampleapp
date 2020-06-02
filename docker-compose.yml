@@ -1,21 +1,24 @@
 version: "3"
 services:
   concierge-db:
-    image: "afsec/concierge-db:latest"
+    # restart: always
+    image: afsec/concierge-db:latest
+    # TODO: define on code /data as database folder
+    #       to activate docker volume as follows in below
     # volumes:
     # - concierge_data:/data
-    restart: always
     environment:
-      CONCIERGE_SERVER_TOKEN: BrickPackSampleAppToken
+      BP_SERVER_TOKEN: BrickPackSampleAppToken
 
   brickpack-sampleapp:
     depends_on:
       - concierge-db
+    # restart: always
+    image: afsec/brickpack-sampleapp:latest
     environment:
       BP_SERVER_TOKEN: SomeRandomToken
       DB_SERVER_URL: http://concierge-db:3341
       BP_CLIENT_TOKEN: BrickPackSampleAppToken
-    build: .
     ports:
       - "8000:8000"
 # volumes:

@@ -3,8 +3,7 @@
 
 # Production image (scratch)
 FROM scratch
-COPY ./dist/brickpack-sampleapp /
 ENV PIPELINE development
-ENV BP_SERVER_TOKEN 9admin9
+COPY ./dist/brickpack-sampleapp /
 EXPOSE 8000
 ENTRYPOINT ["/brickpack-sampleapp"]

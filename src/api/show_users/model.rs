@@ -16,9 +16,9 @@ pub fn show_users(req: Request<State>) -> Result<String, String> {
         Some(uri) => uri,
         None => DEFAULT_DB_URL.to_string(),
     };
-
+    let body_request = r#"{ "table" : "users" }"#.to_string();
     let method = "POST".to_string();
-    let url = format!("{}/api/users/read-all", uri);
-    let result = http_client(method, url, None);
+    let url = format!("{}/api/read-all", uri);
+    let result = http_client(method, url, Some(body_request));
     result
 }

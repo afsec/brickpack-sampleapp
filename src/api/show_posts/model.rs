@@ -24,8 +24,10 @@ pub fn show_posts(req: Request<State>) -> Result<String, String> {
         }
     };
 
+    let body_request = r#"{ "table" : "posts" }"#.to_string();
+
     let method = "POST".to_string();
-    let url = format!("{}/api/posts/read-all", db_url);
-    let result = http_client(method, url, None);
+    let url = format!("{}/api/read-all", db_url);
+    let result = http_client(method, url, Some(body_request));
     result
 }

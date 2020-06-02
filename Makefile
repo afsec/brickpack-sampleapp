@@ -16,7 +16,6 @@ clean:
 
 deploy:
 	./scripts/deploy.sh
-	docker logs -f brickpack-sampleapp
 
 undeploy:
 	./scripts/deploy.sh -u
