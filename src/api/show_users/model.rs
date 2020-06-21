@@ -4,7 +4,7 @@ use brickpack::{
     http_client::http_client,
 };
 
-use tide::Request;
+use brickpack::Request;
 
 use crate::api::{DB_URL_ENV_VAR, DEFAULT_DB_URL};
 

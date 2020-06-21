@@ -6,7 +6,7 @@ use brickpack::{
     http_client::http_client,
 };
 
-use tide::Request;
+use brickpack::Request;
 
 pub fn show_posts(req: Request<State>) -> Result<String, String> {
     // dbg!(req);
@@ -19,7 +19,7 @@ pub fn show_posts(req: Request<State>) -> Result<String, String> {
         Some(url) => url,
         None => {
             let msg = format!("Environment variable {} not found", DB_URL_ENV_VAR);
-            tide::log::warn!("{}", &msg);
+            brickpack::log::warn!("{}", &msg);
             DEFAULT_DB_URL.to_string()
         }
     };

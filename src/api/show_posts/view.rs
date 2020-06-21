@@ -1,4 +1,4 @@
-use tide::{Response, StatusCode};
+use brickpack::{Response, StatusCode};
 
 pub fn show_posts(body: Result<String, String>) -> Response {
     match body {
