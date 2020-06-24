@@ -8,6 +8,7 @@ services:
     # volumes:
     # - concierge_data:/data
     environment:
+      BP_LOG_LEVEL: Info
       BP_SERVER_TOKEN: BrickPackSampleAppToken
 
   brickpack-sampleapp:
@@ -16,6 +17,7 @@ services:
     # restart: always
     image: afsec/brickpack-sampleapp:latest
     environment:
+      BP_LOG_LEVEL: Info
       BP_SERVER_TOKEN: SomeRandomToken
       DB_SERVER_URL: http://concierge-db:3341
       BP_CLIENT_TOKEN: BrickPackSampleAppToken

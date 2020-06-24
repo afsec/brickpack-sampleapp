@@ -1,5 +1,5 @@
 use brickpack::{
-    env_vars::get_token_from_env,
+    env_vars::get_token,
     global_state::State,
     http_client::http_client,
 };
@@ -14,7 +14,7 @@ pub fn show_users(req: Request<State>) -> Result<String, String> {
 
     brickpack::log::debug!("{:?}", req);
 
-    let uri = match get_token_from_env(DB_URL_ENV_VAR) {
+    let uri = match get_token(DB_URL_ENV_VAR) {
         Some(uri) => uri,
         None => DEFAULT_DB_URL.to_string(),
     };

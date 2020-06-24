@@ -1,6 +1,6 @@
 use crate::api::{DB_URL_ENV_VAR, DEFAULT_DB_URL};
 
-use brickpack::{env_vars::get_token_from_env, global_state::State, http_client::http_client};
+use brickpack::{env_vars::get_token, global_state::State, http_client::http_client};
 
 use brickpack::Request;
 
@@ -12,7 +12,7 @@ pub fn show_posts(req: Request<State>) -> Result<String, String> {
     // make deploy
     brickpack::log::debug!("{:?}", req);
 
-    let db_url = match get_token_from_env(DB_URL_ENV_VAR) {
+    let db_url = match get_token(DB_URL_ENV_VAR) {
         Some(url) => url,
         None => {
             let msg = format!("Environment variable {} not found", DB_URL_ENV_VAR);
