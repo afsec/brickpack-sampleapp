@@ -2,31 +2,73 @@
 
 mod api;
 
-use clap::{crate_authors, crate_description, crate_name, crate_version, App as ClapApp};
-use brickpack::App;
+use brickpack::app::App;
+use brickpack_derive::App;
 
+use std::mem;
 
-fn main() {
-    ClapApp::new(crate_name!())
-        .version(crate_version!())
+use clap::{crate_authors, crate_description, App as ClapApp};
+use tide::{Request, Response, StatusCode};
+
+#[derive(App)]
+struct MyApp;
+
+#[async_std::main]
+async fn main() -> tide::Result<()> {
+    ClapApp::new(MyApp.name())
+        .version(MyApp.version())
         .author(crate_authors!())
         .about(crate_description!())
         .get_matches();
 
-    let addr = "0.0.0.0";
-    let port = "8000";
+    let addr = "127.0.0.1";
+    let port = "8080";
 
     let listen = format!("{}:{}", addr, port);
-
-    let mut app = App::new();
-
-    app.add_endpoint("show-users", crate::api::show_users::presenter::handler);
-    app.add_endpoint("show-posts", crate::api::show_posts::presenter::handler);
-
-    app.set_name(crate_name!());
-    app.set_version(crate_version!());
-
-    app.set_listen(listen);
-
-    app.run().unwrap();
+    assert_eq!(0, mem::size_of_val(&MyApp));
+    println!("{} v{}", MyApp.name(), MyApp.version());
+    let mut app = tide::new();
+    tide::log::start();
+    app.at("/").get(index_page);
+    app.at("/auth").get(check_auth);
+    app.at("/maintenance").patch(maintenance_mode);
+    app.at("/api/:endpoint").post(dispatcher);
+    app.listen(listen).await?;
+    Ok(())
 }
+
+async fn index_page(req: Request<()>) -> tide::Result {
+    drop(req);
+    // TODO
+    Ok(Response::new(StatusCode::Found))
+}
+
+async fn check_auth(req: Request<()>) -> tide::Result {
+    drop(req);
+    // TODO
+    Ok(Response::new(StatusCode::Accepted))
+}
+
+async fn maintenance_mode(req: Request<()>) -> tide::Result {
+    drop(req);
+    // TODO
+    Ok(Response::new(StatusCode::ImATeapot))
+}
+
+async fn dispatcher(mut request: Request<()>) -> tide::Result {
+    let endpoint = request.param("endpoint")?;
+    dbg!(&endpoint);
+    match endpoint {
+        "show_users" => Ok(crate::api::show_users::handler(
+            request.body_string().await?,
+        )),
+        "add_user" => Ok(crate::api::add_user::handler(request.body_string().await?)),
+        "del_user" => Ok(crate::api::del_user::handler(request.body_string().await?)),
+        _ => {
+            eprintln!("Not found: {}", endpoint);
+            Ok(Response::new(StatusCode::NotFound))
+        }
+    }
+}
+
+// TODO: User Journey Map (https://uxplanet.org/a-beginners-guide-to-user-journey-mapping-bd914f4c517c)

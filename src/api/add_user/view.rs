@@ -1,4 +1,4 @@
-use super::{InternalMessage, ShowUsers};
+use super::{AddUser, InternalMessage};
 
 use brickpack::endpoint::View;
 
@@ -6,13 +6,15 @@ use tide::{prelude::Serialize, Body, Response, StatusCode};
 
 #[derive(Serialize)]
 struct ResponseBody {
-    result: Vec<String>,
+    status: StatusCode,
 }
 
-impl View<InternalMessage> for ShowUsers {
+impl View<InternalMessage> for AddUser {
     fn view(&self, outcome: InternalMessage) -> Response {
         drop(outcome);
-        let body_response = ResponseBody { result: Vec::new() };
+        let body_response = ResponseBody {
+            status: StatusCode::Ok,
+        };
         Response::builder(StatusCode::Ok)
             .body(Body::from_json(&body_response).unwrap())
             .build()

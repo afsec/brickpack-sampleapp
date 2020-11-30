@@ -1,9 +1,10 @@
 # Staging image (busybox:musl)
 # FROM busybox:musl
+# ENV PIPELINE staging
 
 # Production image (scratch)
 FROM scratch
-ENV PIPELINE development
-COPY ./dist/brickpack-sampleapp /
+ENV PIPELINE release
+COPY ./dist/my-app /
 EXPOSE 8000
-ENTRYPOINT ["/brickpack-sampleapp"]
+ENTRYPOINT ["/my-app"]

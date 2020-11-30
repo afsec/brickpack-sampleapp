@@ -1,14 +1,17 @@
 [package]
-name = 'brickpack-sampleapp'
-version = '0.3.0'
-authors = ['Antonio Feitosa <antonio.cfc@gmail.com>']
-edition = '2018'
+name = "brickpack-sampleapp"
+version = "0.1.0"
+authors = ["Antonio Feitosa <antonio.cfc@gmail.com>"]
+edition = "2018"
 
 [dependencies]
-clap = '2.33.1'
 
-[dependencies.brickpack]
-version = '0.9'
-git = 'https://github.com/afsec/brickpack.git'
-# path = '../brickpack/'
+brickpack = { git = 'https://github.com/afsec/brickpack/', branch = "main"}
+brickpack_derive = { git = 'https://github.com/afsec/brickpack/', branch = "main" }
 
+tide = "0.15.0"
+async-std = { version = "1.7.0", features = ["attributes"] }
+serde = { version = "1.0.117", features = ["derive"] }
+clap = "2.33.3"
+
+# surf = { version = "2.1.0", default-features = false, features = ["h1-client"] }

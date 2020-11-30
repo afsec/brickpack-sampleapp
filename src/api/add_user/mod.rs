@@ -12,10 +12,10 @@ use tide::Response;
 
 // Endpoint definition
 #[derive(Debug, Endpoint)]
-struct ShowUsers;
+struct AddUser;
 
 // Outcome definition
 #[derive(Debug, Outcome)]
 struct InternalMessage;
 
-build_presenter!(ShowUsers, InternalMessage);
+build_presenter!(AddUser, InternalMessage);
