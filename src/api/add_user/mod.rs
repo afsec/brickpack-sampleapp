@@ -8,7 +8,7 @@ use brickpack::{
 
 use brickpack_derive::{Endpoint, Outcome};
 
-use tide::Response;
+use tide::{Response, StatusCode};
 
 // Endpoint definition
 #[derive(Debug, Endpoint)]

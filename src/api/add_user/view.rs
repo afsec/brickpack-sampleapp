@@ -2,7 +2,9 @@ use super::{AddUser, InternalMessage};
 
 use brickpack::endpoint::View;
 
-use tide::{prelude::Serialize, Body, Response, StatusCode};
+use tide::{Body, Response, StatusCode};
+
+use serde::Serialize;
 
 #[derive(Serialize)]
 struct ResponseBody {
@@ -11,7 +13,6 @@ struct ResponseBody {
 
 impl View<InternalMessage> for AddUser {
     fn view(&self, outcome: InternalMessage) -> Response {
-        drop(outcome);
         let body_response = ResponseBody {
             status: StatusCode::Ok,
         };
