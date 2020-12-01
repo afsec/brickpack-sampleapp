@@ -8,10 +8,14 @@ use brickpack::{
 
 use brickpack_derive::{Endpoint, Outcome};
 
-use tide::{Response, StatusCode};
+use tide::Response;
 
 // Endpoint definition
+// #[derive(Debug, Endpoint)]
+// struct AddUser;
+
 #[derive(Debug, Endpoint)]
+#[endpoint_name = "add_user"]
 struct AddUser;
 
 // Outcome definition

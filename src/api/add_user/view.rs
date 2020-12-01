@@ -13,6 +13,7 @@ struct ResponseBody {
 
 impl View<InternalMessage> for AddUser {
     fn view(&self, outcome: InternalMessage) -> Response {
+        drop(outcome);
         let body_response = ResponseBody {
             status: StatusCode::Ok,
         };

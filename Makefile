@@ -1,4 +1,4 @@
-all: build
+all: build run
 
 release:
 	./scripts/build.sh

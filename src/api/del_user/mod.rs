@@ -12,6 +12,7 @@ use tide::Response;
 
 // Endpoint definition
 #[derive(Debug, Endpoint)]
+#[endpoint_name = "del_user"]
 struct DelUser;
 
 // Outcome definition

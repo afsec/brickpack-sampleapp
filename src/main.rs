@@ -26,9 +26,10 @@ async fn main() -> tide::Result<()> {
 
     let listen = format!("{}:{}", addr, port);
     assert_eq!(0, mem::size_of_val(&MyApp));
-    println!("{} v{}", MyApp.name(), MyApp.version());
-    let mut app = tide::new();
     tide::log::start();
+    let mut app = tide::new();
+    tide::log::info!("Starting App [{} v{}]:", MyApp.name(), MyApp.version());
+    tide::log::info!("Powered by {} v{}",MyApp.powered_desc(),MyApp.powered_ver());
     app.at("/").get(index_page);
     app.at("/auth").get(check_auth);
     app.at("/maintenance").patch(maintenance_mode);
@@ -40,6 +41,7 @@ async fn main() -> tide::Result<()> {
 async fn index_page(req: Request<()>) -> tide::Result {
     drop(req);
     // TODO
+    // Ok(Response::new(StatusCode::ImATeapot)) // If is in Maintenance Mode
     Ok(Response::new(StatusCode::Found))
 }
 
@@ -52,7 +54,7 @@ async fn check_auth(req: Request<()>) -> tide::Result {
 async fn maintenance_mode(req: Request<()>) -> tide::Result {
     drop(req);
     // TODO
-    Ok(Response::new(StatusCode::ImATeapot))
+    Ok(Response::new(StatusCode::Accepted))
 }
 
 async fn dispatcher(mut request: Request<()>) -> tide::Result {
@@ -65,7 +67,7 @@ async fn dispatcher(mut request: Request<()>) -> tide::Result {
         "add_user" => Ok(crate::api::add_user::handler(request.body_string().await?)),
         "del_user" => Ok(crate::api::del_user::handler(request.body_string().await?)),
         _ => {
-            eprintln!("Not found: {}", endpoint);
+            tide::log::warn!("Not found: {}", endpoint);
             Ok(Response::new(StatusCode::NotFound))
         }
     }
