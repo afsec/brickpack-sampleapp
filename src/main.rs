@@ -29,7 +29,11 @@ async fn main() -> tide::Result<()> {
     tide::log::start();
     let mut app = tide::new();
     tide::log::info!("Starting App [{} v{}]:", MyApp.name(), MyApp.version());
-    tide::log::info!("Powered by {} v{}",MyApp.powered_desc(),MyApp.powered_ver());
+    tide::log::info!(
+        "Powered by {} v{}",
+        MyApp.powered_desc(),
+        MyApp.powered_ver()
+    );
     app.at("/").get(index_page);
     app.at("/auth").get(check_auth);
     app.at("/maintenance").patch(maintenance_mode);
