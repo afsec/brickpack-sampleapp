@@ -1,13 +1,13 @@
 [package]
 name = "brickpack-sampleapp"
-version = "0.9.6"
+version = "0.9.7"
 authors = ["Antonio Feitosa <antonio.cfc@gmail.com>"]
 edition = "2018"
 
 [dependencies]
 
-brickpack = { git = 'https://github.com/afsec/brickpack/', branch = "main"}
-brickpack_derive = { git = 'https://github.com/afsec/brickpack/', branch = "main" }
+brickpack = { version = '0.9.7', git = 'https://github.com/afsec/brickpack/', branch = "main"}
+brickpack_derive = { version = '0.9.7', git = 'https://github.com/afsec/brickpack/', branch = "main" }
 
 # brickpack = { path = '/home/user/src/brickpack/brickpack/'}
 # brickpack_derive = { path = '/home/user/src/brickpack/brickpack_derive/'}

@@ -7,19 +7,15 @@ use brickpack::{
 };
 
 use brickpack_derive::{Endpoint, Outcome};
-
-use tide::Response;
+use tide::prelude::Serialize;
 
 // Endpoint definition
-// #[derive(Debug, Endpoint)]
-// struct AddUser;
-
 #[derive(Debug, Endpoint)]
 #[endpoint_name = "add_user"]
 struct AddUser;
 
 // Outcome definition
-#[derive(Debug, Outcome)]
-struct InternalMessage;
+#[derive(Debug, Outcome,Serialize)]
+struct InternalMessage(Vec<String>);
 
 build_presenter!(AddUser, InternalMessage);

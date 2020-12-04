@@ -65,11 +65,9 @@ async fn dispatcher(mut request: Request<()>) -> tide::Result {
     let endpoint = request.param("endpoint")?;
     dbg!(&endpoint);
     match endpoint {
-        "show_users" => Ok(crate::api::show_users::handler(
-            request.body_string().await?,
-        )),
-        "add_user" => Ok(crate::api::add_user::handler(request.body_string().await?)),
-        "del_user" => Ok(crate::api::del_user::handler(request.body_string().await?)),
+        "show_users" => crate::api::show_users::handler(request.body_string().await?),
+        "add_user" => crate::api::add_user::handler(request.body_string().await?),
+        "del_user" => crate::api::del_user::handler(request.body_string().await?),
         _ => {
             tide::log::warn!("Not found: {}", endpoint);
             Ok(Response::new(StatusCode::NotFound))
