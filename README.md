@@ -28,6 +28,6 @@ $ make release run
 {"level":30,"time":1606862446887,"msg":"Server listening on http://127.0.0.1:8080"}
 ```
 
-## Dependencies Status
+---
 
 [![Dependencies Status](https://deps.rs/repo/github/afsec/brickpack-sampleapp/status.svg)](https://deps.rs/repo/github/afsec/brickpack-sampleapp)
