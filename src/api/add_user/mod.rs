@@ -15,7 +15,9 @@ use tide::prelude::Serialize;
 struct AddUser;
 
 // Outcome definition
-#[derive(Debug, Outcome,Serialize)]
-struct InternalMessage(Vec<String>);
+#[derive(Debug, Outcome, Serialize)]
+struct InternalMessage {
+    id: usize,
+}
 
 build_presenter!(AddUser, InternalMessage);
