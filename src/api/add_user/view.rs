@@ -3,7 +3,7 @@ use super::{AddUser, InternalMessage};
 use brickpack::endpoint::{Name, View};
 
 use serde_json::to_string as serde_json_to_string;
-use tide::{http::mime, Error as TideError, Response, StatusCode,prelude::Serialize};
+use tide::{http::mime, prelude::Serialize, Error as TideError, Response, StatusCode};
 
 #[derive(Serialize)]
 struct ResponseBody {
@@ -24,13 +24,13 @@ impl View<InternalMessage> for AddUser {
             }
             Err(error) => {
                 tide::log::error!(r#"Endpoint [{}]: {}"#, self.name(), error);
-                #[cfg(debug_assertions)]
                 let error_message = error.to_string();
-
-
                 let mut response = Response::from(error);
                 response.set_content_type(mime::JSON);
-                response.insert_header("internal-error", &error_message);
+
+                #[cfg(debug_assertions)]
+                response.insert_header("internal-error", error_message.lines().next().unwrap_or("None"));
+
                 let response_body = ResponseBody {
                     status: "Error".into(),
                     description: error_message,
